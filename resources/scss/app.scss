@@ -1,0 +1,10 @@
+ //@import '~bootstrap/scss/bootstrap';
+
+ @use 'reset';
+ @use 'generics';
+ @use 'utils';
+ @use 'header';
+ @use 'main';
+ @use 'topfooter';
+ @use 'bottomfooter';
+ @use 'show_comics';

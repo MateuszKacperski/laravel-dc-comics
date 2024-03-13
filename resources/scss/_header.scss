@@ -1,0 +1,32 @@
+header {
+    min-height: 150px;
+    background-color: white;
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    nav {
+        ul {
+            display: flex;
+            list-style: none;
+
+            li {
+                padding: 65px 0;
+
+                a {
+                    font-size: 1rem;
+                    padding: 10px;
+                    text-decoration: none;
+                    color: black;
+
+                    &:hover {
+                        color: #0282f9;
+                        border-bottom: #0282f9 solid 2px;
+                    }
+                }
+            }
+        }
+    }
+}

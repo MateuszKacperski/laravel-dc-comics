@@ -1,0 +1,27 @@
+#bottom-footer {
+    background-color: #303030;
+    min-height: 100px;
+}
+
+button {
+    color: white;
+    background-color: #303030;
+    border: solid 2px #0282f9;
+    padding: 10px;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+        color: #0282f9;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+}
