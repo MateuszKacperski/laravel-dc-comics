@@ -1,5 +1,3 @@
-//@import '~bootstrap/scss/bootstrap';
-
 @use "reset";
 @use "generics";
 @use "utilities";
@@ -7,3 +5,5 @@
 @use "footer";
 @use "home";
 @use "comic";
+
+@import '~bootstrap/scss/bootstrap';
