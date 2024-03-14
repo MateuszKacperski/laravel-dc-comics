@@ -1,111 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <main class="comic">
-        <section class="cover-section">
-            <div class="wrapper">
-                <figure >
-                    <p class="cover-label up-right">COMIC BOOK</p>
-                    <img src="{{$comic['thumb']}}" alt="{{$comic['title']}}">        
-                    <p class="cover-label bottom">VIEW GALLERY</p>
-                </figure>        
+@extends('layouts.main')
+
+@section('title', $comic->title)
+
+
+@section('main-content')
+<main>
+    <div class="blu-separator">
+        <div class="container">
+            <figure class="comic-figure">
+                <img src=" {{ $comic->thumb }}" alt="adv">
+                <div class="comic-type">{{ $comic->type }}</div>
+                <div class="vg">View gallery</div>
+            </figure>
+        </div>
+    </div>
+    <section id="comic-details" >
+        <div class="upper-comic-details container" >
+            <div class="upper-comic-generics">
+                <h1>{{ $comic->title}}</h1>
+                <div class="availability">
+                    <div class="availability-left">
+                        <h4>U.S. Price:  <span>{{ $comic->price}}</span></h4>
+                        <h4>AVAILABLE</h4>
+                    </div>
+                    <div class="availability-right">
+                        <h4>Check availability<h4>
+                    </div>
+                </div>
+                <p>{{ $comic->description }}</p>
             </div>
-        </section>
-        <section class="preview">
-            <div class="wrapper">            
-                <div class="text-section">
-                    <h2>{{$comic['title']}}</h2>
-                    <div class="flex">
-                        <div class="flex comic-available label-available">
-                            <p class="color-light-green">US Price: <span class="color-white">{{$comic['price']}}</span></p>
-                            <p class="color-light-green">AVAILABLE</p>
+            <figure class="advertisement">
+                <img src=" {{ asset('images/adv.jpg')}}" alt="adv">
+            </figure>
+        </div>
+        <div class="bottom-comic-details">
+            <div class="container">
+                <div class="bottom-comic-generics">
+                    <div class="talents">
+                        <h2>Talents</h2>
+                        <div class="talents-box">
+                            <h5>Art by:</h5>
+                            <div class="artists-list">
+                                <p>{{$comic->artists}}</p>
+                            </div>
                         </div>
-                        <div class="color-white label-available">
-                            Check Availability <i class="fa-solid fa-caret-down"></i>
+                        <div class="talents-box">
+                            <h5>Written by:</h5>
+                            <div class="writers-list">
+                                <p>{{$comic->writers}}</p>
+                            </div>
                         </div>
                     </div>
-                    <p class="description">{{$comic['description']}}</p>
-                </div>
-                <div class="adv">
-                    <p>ADVERTISEMENT</p>
-                    <img src="{{asset('images/adv.jpg')}}" alt="">
-                </div>
-            </div>
-        </section>
-        <section class="infos">
-            <div class="wrapper">
-                <div class="talent">
-                    <h2>Talent</h2>
-                    <ul>
-                        <li class="flex">
-                            <div>Art by:</div>
-                            <div class="list-people">
-                                @foreach ( $comic['artists'] as  $artist)
-                                    <a href="#">{{$artist}}</a>, 
-                                    @if($loop->last)
-                                        <a href="#">{{$artist}}</a>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </li>
-                        <li class="flex">
-                            <div>Written by:</div>
-                            <div class="list-people">
-                                @foreach ( $comic['writers'] as  $writer)
-                                    <a href="#">{{$writer}}</a>, 
-                                    @if($loop->last)
-                                        <a href="#">{{$writer}}</a>
-                                    @endif
-                                @endforeach
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="specs">
-                    <h2>Specs</h2>
-                    <ul>
-                        <li class="flex">
-                            <div>Series:</div>
-                            <div class="list-people">
-                                <a href="#">{{$comic['series']}}</a>
-                            </div>
-                        </li>
-                        <li class="flex">
-                            <div>U.S. Price:</div>
-                            <div class="list-people">
-                                {{$comic['price']}}
-                            </div>
-                        </li>
-                        <li class="flex">
-                            <div>On Sale Date:</div>
-                            <div class="list-people">
-                                {{date_format(date_create($comic['sale_date']), "M d Y")}}
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="specs">
+                        <h2>Specs</h2>
+                        <div class="specs-box">
+                            <h5>Series:</h5>
+                            <h4>{{$comic->series}}</h4>
+                        </div>
+                        <div class="specs-box">
+                            <h5>U.S. Price:</h5>
+                            <h4>{{$comic->price}}</h4>
+                        </div>
+                        <div class="specs-box">
+                            <h5>On Sale Date:</h5>
+                            <h4>{{$comic->sale_date}}</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="links">
-                <div class="container">
-                    <ul class="flex">
-                        <li><a href="">DIGITAL COMICS <img src="{{asset('images/cta-icons.png')}}" alt="ok"> </a> </li>
-                        <li><a href="">SHOP DC <img src="{{asset('images/cta-icons.png')}}" alt="ok"> </a> </li>
-                        <li><a href="">COMIC SHOP LOCATOR <img src="{{asset('images/cta-icons.png')}}" alt="ok"> </a> </li>
-                        <li><a href="">SUB SCRIPTIONS <img src="{{asset('images/cta-icons.png')}}" alt="ok"> </a> </li>
-                    </ul>
-                </div>
-    
-            </div>
-        </section>
-    </main>  
-    
-</body>
-</html>
+            
+        </div>
+    </section>
+</main>
+
+
+
+@endsection
 
 

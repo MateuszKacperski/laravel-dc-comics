@@ -1,11 +1,17 @@
 /* Generics */
+
 img {
     max-width: 100%;
-    height: auto;
+}
+
+a {
+    text-decoration: none;
 }
 
 body {
-    min-height: 100vh;
-    background-color: black;
-    font-family: 'Open Sans Variable', sans-serif;
+    font-family: "Open Sans";
+}
+
+ul li {
+    list-style-type: none;
 }

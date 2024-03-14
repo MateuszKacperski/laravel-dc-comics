@@ -1,23 +1,20 @@
-
 <header>
     <div class="container">
-
-        <figure>
-            <img src="{{ asset('images/dc-logo.png')}}" alt="DC logo">
-        </figure>
         <nav>
+            <figure>
+                <img src="{{ asset('images/dc-logo.png')}}" alt="logo dc">
+            </figure>
             <ul>
-                <li><a href="#">CHARACTERS</a></li>
-                <li><a href="#">COMICS</a></li>
-                <li><a href="#">MOVIES</a></li>
-                <li><a href="#">TV</a></li>
-                <li><a href="#">GAMES</a></li>
-                <li><a href="#">COLLECTIONABLES</a></li>
-                <li><a href="#">VIDEO</a></li>
-                <li><a href="#">FANS</a></li>
-                <li><a href="{{route('news')}}">NEWS</a></li>
-                <li><a href="#">SHOP</a></li>
+                @foreach (config('header_menu') as $link)
+                <li>
+                    <a href="{{ route('comics.index')}}">
+                    </a>
+                </li>
+                @endforeach
             </ul>
         </nav>
+
     </div>
 </header>
+
+<div class="jumbotron"></div>

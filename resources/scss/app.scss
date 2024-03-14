@@ -1,10 +1,9 @@
- //@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
 
- @use 'reset';
- @use 'generics';
- @use 'utils';
- @use 'header';
- @use 'main';
- @use 'topfooter';
- @use 'bottomfooter';
- @use 'show_comics';
+@use "reset";
+@use "generics";
+@use "utilities";
+@use "header";
+@use "footer";
+@use "home";
+@use "comic";
