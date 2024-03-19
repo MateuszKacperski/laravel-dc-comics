@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -29,18 +30,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {   
-
-        $data = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'thumb' => 'required|string',
-            'price' => 'required|string',
-            'series' => 'required|string',
-            'sale_date' => 'required|date',
-            'type' => 'required|string',
-            'artists' => 'required|string',
-            'writers' => 'required|string'
-        ]);
+       $data = $this->validateFilds($request->all());
 
         $data = $request->all();
 
@@ -93,7 +83,10 @@ class ComicController extends Controller
         //$comic->update($data);  le due istruzioni sootto si possono fare in questa unica istruzione
 
         $comic->fill($data);
+        
         $comic->save();
+
+              // $comic->update($data);
 
         return to_route('comics.show', $comic->id);
     }
@@ -101,8 +94,25 @@ class ComicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return to_route('comics.index');
+    }
+
+    private function validateFilds($data, $id= null){
+        [
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'thumb' => 'required|string',
+            'price' => 'required|string',
+            'series' => 'required|string',
+            'sale_date' => 'required|date',
+            'type' => 'required|string',
+            'artists' => 'required|string',
+            'writers' => 'required|string'
+        ];
+        $valida_data = Validator::make($data)->validate();
+        return $valida_data;
     }
 }

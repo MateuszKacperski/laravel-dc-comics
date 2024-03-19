@@ -19,6 +19,11 @@
                                 </figure>
                                 <h4>{{ $comic->title}}</h4>
                             </a>
+                            <form action="{{route ('comics.destroy', $comic->id )}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger"> Elimina comic </button>
+                            </form>
                         </div>
                     </div>
                     @endforeach
